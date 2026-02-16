@@ -11,4 +11,4 @@
 ### Установка
 ```bash
 git clone https://github.com/GiorgioAlani/task1_2026.git
-cd task1
+cd task1_2026
