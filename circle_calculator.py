@@ -4,8 +4,7 @@ class CircleSquareCalculate:
     """Класс для оценки площади круга методом Монте-Карло."""
     
     def __init__(self, a, b, r, x0, y0, n):
-        """Метод для инициализации параметров"""
-        
+        """Метод для инициализации параметров."""
         self.a = a
         self.b = b
         self.r = r
@@ -15,7 +14,7 @@ class CircleSquareCalculate:
         
     def is_point_in_circle(self, x, y):
         """Метод для проверки, находится ли точка (x, y) внутри круга."""
-        return (x - self.x0)**2 + (y - self.y0)**2 <= self.r ** 2
+        return (x - self.x0)**2 + (y - self.y0)**2 <= self.r**2
     
     def number_of_points_calculate(self):
         """Метод для подсчета кол-ва точек, попавших в круг."""
@@ -32,29 +31,12 @@ class CircleSquareCalculate:
         count = self.number_of_points_calculate()
         return count / self.n * self.a * self.b
     
-    
-     
     def calculate_statistics(self, trials=10):
-        """Метод для опредления мат. ожидания и дисперсии"""
+        """Метод для определения мат. ожидания и дисперсии."""
         results = []
         for i in range(trials):
             results.append(self.final_square())
-        expectation = sum(results)/trials
-        expectation_of_squares = sum(x ** 2 for x in results) / trials
+        expectation = sum(results) / trials
+        expectation_of_squares = sum(x**2 for x in results) / trials
         variance = expectation_of_squares - expectation**2
         return expectation, variance
-    
-    
-
-if __name__ == "__main__":
-    A = B = 10
-    R = 1
-    X0 = Y0 = 5
-    N = 10000
-    
-    calc = CircleSquareCalculate(A, B, R, X0, Y0, N)
-    mean, var = calc.calculate_statistics(trials=10)
-    
-    print(f"Математическое ожидание: {mean:.6f}")
-    print(f"Дисперсия: {var:.6f}")
-    print(f"Ответ: {mean:.6f} (𝜋)")
